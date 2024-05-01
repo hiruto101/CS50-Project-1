@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from markdown2 import Markdown
 from django.http import HttpResponseRedirect
+import random
 
 from . import util
 
@@ -19,6 +20,7 @@ def index(request):
         "entries": util.list_entries()
     })
 
+
 def entry(request, title):
     content = mark_to_HTML(title)
     if content == None:
@@ -26,11 +28,11 @@ def entry(request, title):
             "message":"404 Title not found"
         })
     else:
-        print(title)
         return render(request,"encyclopedia/entry.html",{
             "title":title,
             "content":content
         })
+    
     
 def search(request):
     #TODO if the title is in list redirect to the entry of that title
@@ -58,6 +60,7 @@ def search(request):
                 "message": "No search found"
             })
 
+
 def create(request):
     if request.method == "POST":
         title = request.POST.get("title")
@@ -81,3 +84,28 @@ def create(request):
         "title":"GET"
     })
             
+            
+def edit(request):
+    
+    if request.method =="POST":
+        title = request.POST.get("title")
+        content = request.POST.get("content")
+        print("post ",title,content)
+        util.save_entry(title,content)
+        return entry(request,title)
+    
+    title = request.GET.get("title")
+    print("get ",title)
+    content = util.get_entry(title)
+    return render(request,"encyclopedia/edit.html", {
+        "title": title,
+        "content":content
+    })
+
+
+def rand(request):
+    content = util.list_entries()
+    content = list(content)
+    r_num = random.randint(0, (len(content) - 1))
+    
+    return entry(request,content[r_num])

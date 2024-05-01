@@ -5,6 +5,11 @@
 {% endblock %}
 
 {% block body %}
-      <p>{{ content |safe }}</p>
-    
+    <form action="{% url 'edit' %}" method = "get">
+        {% csrf_token %}
+        <input type="hidden" name="title" value="{{title}}">
+        <textarea name="content" hidden>{{ content |safe }}</textarea>
+        <p>{{ content |safe }}</p>
+        <button type="submit" id="edit"> Edit </button>
+    </form>
 {% endblock %}

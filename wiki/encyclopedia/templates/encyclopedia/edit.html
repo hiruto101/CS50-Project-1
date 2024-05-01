@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-<form action="{% url 'create' %}" method="post">
+<form action="" method="post">
     {% csrf_token %}
     <table>
         <tr>
@@ -15,7 +15,8 @@
         </tr>
         <tr>
             <td>
-                <input type="text" name="title">
+                <intput type="hidden" name="h_title" value="{{title}}">
+                <input type="text" name="title" value="{{title}}" readonly> 
             </td>
         </tr>
         <tr>
@@ -25,12 +26,12 @@
         </tr>
         <tr>
             <td>
-                <textarea name="content" id="content"></textarea>
+                <textarea name="content" id="content" value="{{content}}">{{content}}</textarea>
             </td>
         </tr>
         <tr>
             <td>
-                <input type="submit" name="submit">
+                <input type="submit" name="save" value="Save">
             </td>
             
         </tr>
