@@ -1,0 +1,39 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block body %}
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>
+                <label>Title</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="title">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Content</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <textarea name="content" id="content"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" name="submit">
+            </td>
+            
+        </tr>
+    </table>
+</form>
+{% endblock %}
