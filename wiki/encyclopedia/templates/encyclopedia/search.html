@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block body %}
+    <h2>Result with "{{ title }}" in title</h2>
     <ul>
     {% for list in n_list %}
         <li><a href="{% url 'entry' title=list %}"> {{ list }}</li></a>

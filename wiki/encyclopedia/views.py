@@ -26,7 +26,7 @@ def entry(request, title):
     if content == None:
         return render(request,"encyclopedia/error.html", {
              "message": title + " not found",
-                "title":"404 Error",
+                "title":title +" 404 Error",
                 "error":"404"
         })
     else:
@@ -51,11 +51,12 @@ def search(request):
         n_list=[]
         for item in entries:
             if q in item:
-                n_list.append(item)
+                n_list.append(item.capitalize())
        
         if len(n_list) > 0:
            return render(request, "encyclopedia/search.html", {
-               "n_list":n_list
+               "n_list":n_list,
+               "title":q
            })
         else:
             return render(request, "encyclopedia/error.html", {
