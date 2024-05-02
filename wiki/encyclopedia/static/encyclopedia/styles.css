@@ -39,17 +39,38 @@ table, td, tr {
 .sidebar h2 {
     margin-top: 5px;
 }
+.n_p_label {
+    font-weight: bold;
+    font-size: 18px;
+}
 
-#content {
-    width: 1500px;
-    height: 700px;
+input[type="submit"] {
+    background-color: rgb(173, 168, 211);
+    border: none;
+    padding: 10px 20px; 
+    color:black;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+
+input[type="submit"]:hover {
+    background-color: rgb(57, 59, 75);
+    color:white;
 }
 
 #edit {
     background-color: rgb(194, 78, 78);
+    text-align: center;
     color:white;
-    width: 75px;
-    height: 40px;
+    padding: 10px 20px;
     font-weight: 600;
     border-radius: 8px;
+    border: none;
+    cursor:pointer;
+}
+#edit:hover {
+    background-color: rgb(100, 26, 26);
 }

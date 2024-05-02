@@ -25,7 +25,9 @@ def entry(request, title):
     content = mark_to_HTML(title)
     if content == None:
         return render(request,"encyclopedia/error.html", {
-            "message":"404 Title not found"
+             "message": title + " not found",
+                "title":"404 Error",
+                "error":"404"
         })
     else:
         return render(request,"encyclopedia/entry.html",{
@@ -57,7 +59,9 @@ def search(request):
            })
         else:
             return render(request, "encyclopedia/error.html", {
-                "message": "No search found"
+                "message": q + " not found",
+                "title":"404 Error",
+                "error":"404"
             })
 
 
@@ -68,13 +72,15 @@ def create(request):
         entries = util.list_entries()
         entries = list((entry.lower() for entry in entries))
         
-        if(title) and content:
+        if title and content:
             if title.lower() not in entries:
                 util.save_entry(title.capitalize(),content)
                 return entry(request,title)
             else:
                 return render(request,"encyclopedia/error.html", {
-                    "message":"Entry already exists"
+                    "message":"page already exists",
+                    "title":"Error",
+                    "error":title.capitalize()
                 })
         else:
             return render(request,"encyclopedia/error.html", {

@@ -5,33 +5,27 @@
 {% endblock %}
 
 {% block body %}
-<form action="" method="post">
+<form action="{% url 'edit' %}" method="post">
     {% csrf_token %}
     <table>
         <tr>
             <td>
-                <label>Title</label>
+                <div class="input-group flex-nowrap">
+                    <intput type="hidden" name="h_title" value="{{title}}"></intput>
+                    <input type="text" name ="title" class="form-control" value="{{ title }}" placeholder="Title" aria-label="Username" aria-describedby="addon-wrapping" readonly>
+                  </div>
             </td>
         </tr>
         <tr>
             <td>
-                <intput type="hidden" name="h_title" value="{{title}}">
-                <input type="text" name="title" value="{{title}}" readonly> 
+                <div class="form-floating">
+                    <textarea name="content" class="form-control"placeholder="Markdown content here" id="floatingTextarea2" style="height: 600px; width: 1000px">{{ content }}</textarea>
+                </div>
             </td>
         </tr>
         <tr>
             <td>
-                <label>Content</label>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <textarea name="content" id="content" value="{{content}}">{{content}}</textarea>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type="submit" name="save" value="Save">
+                <input type="submit" name="submit" class="submit_button" value="Submit">
             </td>
             
         </tr>

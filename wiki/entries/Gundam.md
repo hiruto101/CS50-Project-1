@@ -1,3 +1,2 @@
 #Gundam
-
-Mobile suit gundam
+Wing [Python](/wiki/Python)
